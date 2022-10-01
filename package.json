@@ -1,0 +1,10 @@
+{
+    "name": "yamanote_wasuremon_node",
+    "version": "0.0.0",
+    "description": "Node.js Project",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "yuria_cats"
+}
