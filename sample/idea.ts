@@ -29,3 +29,8 @@ type train_loop = {
     end_station: station,
     timetable_category: timetable_category
 }
+
+type station_timetable = {
+    station: station,
+    timetable_category: timetable_category,
+}
