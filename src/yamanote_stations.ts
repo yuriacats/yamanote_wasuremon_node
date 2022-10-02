@@ -105,4 +105,22 @@ Out_Takanawa_Gateway.name = "高輪ゲートウェイ";
 Out_Takanawa_Gateway.next = Out_Shinagawa;
 Out_Takanawa_Gateway.is_inside = true;
 
-In_Shinagawa.name = "品川"
+In_Shinagawa.name = "品川";
+In_Shinagawa.next = In_Takanawa_Gateway;
+In_Shinagawa.is_inside = true;
+
+Out_Shinagawa.name = "品川";
+Out_Shinagawa.next = Out_Osaki;
+Out_Shinagawa.is_inside = false;
+
+In_Osaki.name = "大崎";
+In_Osaki.next = In_Shinagawa;
+In_Osaki.is_inside = true;
+
+Out_Osaki.name = "大崎";
+Out_Osaki.next = Out_Gotanda;
+Out_Osaki.is_inside = false;
+
+In_Gotanda.name = "五反田";
+In_Gotanda.next = In_Meguro;
+In_Gotanda.is_inside = true;
