@@ -122,5 +122,186 @@ Out_Osaki.next = Out_Gotanda;
 Out_Osaki.is_inside = false;
 
 In_Gotanda.name = "五反田";
-In_Gotanda.next = In_Meguro;
+In_Gotanda.next = In_Osaki;
 In_Gotanda.is_inside = true;
+
+Out_Gotanda.name = "五反田";
+Out_Gotanda.next = Out_Meguro;
+Out_Gotanda.is_inside = false;
+
+In_Meguro.name = "目黒";
+In_Meguro.next = In_Gotanda;
+In_Meguro.is_inside = true;
+
+Out_Meguro.name = "目黒";
+Out_Meguro.next = Out_Ebisu;
+Out_Meguro.is_inside = false;
+
+In_Ebisu.name = "恵比寿";
+In_Ebisu.next = In_Meguro;
+In_Ebisu.is_inside = true;
+
+Out_Ebisu.name = "恵比寿";
+Out_Ebisu.next = Out_Shibuya;
+Out_Ebisu.is_inside = false;
+
+In_Shibuya.name = "渋谷";
+In_Shibuya.next = In_Ebisu;
+In_Shibuya.is_inside = true;
+
+Out_Shibuya.name = "渋谷";
+Out_Shibuya.next = Out_Harajuku;
+Out_Shibuya.is_inside = false;
+
+In_Harajuku.name = "原宿";
+In_Harajuku.next = In_Shibuya;
+In_Harajuku.is_inside = true;
+
+Out_Harajuku.name = "原宿";
+Out_Harajuku.next = Out_Yoyogi;
+Out_Harajuku.is_inside = false;
+
+In_Yoyogi.name = "代々木";
+In_Yoyogi.next = In_Harajuku;
+In_Yoyogi.is_inside = false;
+
+Out_Yoyogi.name = "代々木";
+Out_Yoyogi.next = Out_Shinjuku;
+Out_Yoyogi.is_inside = false;
+
+In_Shinjuku.name = "新宿";
+In_Shinjuku.next = In_Yoyogi;
+In_Shinjuku.is_inside = true;
+
+Out_Shinjuku.name = "新宿";
+Out_Shinjuku.next = Out_Shin_Okubo;
+Out_Shinjuku.is_inside = false;
+
+In_Shin_Okubo.name = "新大久保";
+In_Shin_Okubo.next = In_Shinjuku;
+In_Shin_Okubo.is_inside = true;
+
+Out_Shin_Okubo.name = "新大久保";
+Out_Shin_Okubo.next = Out_Takadanobaba;
+Out_Shin_Okubo.is_inside = false;
+
+In_Takadanobaba.name = "高田馬場";
+In_Takadanobaba.next = In_Shin_Okubo;
+In_Takadanobaba.is_inside = true;
+
+Out_Takadanobaba.name = "高田馬場";
+Out_Takadanobaba.next = Out_Mejiro;
+Out_Takadanobaba.is_inside = false;
+
+In_Mejiro.name = "目白";
+In_Mejiro.next = In_Takadanobaba;
+In_Mejiro.is_inside = true;
+
+Out_Mejiro.name = "目白";
+Out_Mejiro.next = Out_Ikebukuro;
+Out_Mejiro.is_inside = false;
+
+In_Ikebukuro.name = "池袋";
+In_Ikebukuro.next = In_Mejiro;
+In_Ikebukuro.is_inside = true;
+
+Out_Ikebukuro.name = "池袋";
+Out_Ikebukuro.next = Out_Otsuka;
+Out_Ikebukuro.is_inside = false;
+
+In_Otsuka.name = "大塚";
+In_Otsuka.next = In_Ikebukuro;
+In_Otsuka.is_inside = true;
+
+Out_Otsuka.name = "大塚";
+Out_Otsuka.next = Out_Sugamo;
+Out_Otsuka.is_inside = false;
+
+In_Sugamo.name = "巣鴨";
+In_Sugamo.next = In_Otsuka;
+In_Sugamo.is_inside = true;
+
+Out_Sugamo.name = "巣鴨";
+Out_Sugamo.next = Out_Komagome;
+Out_Sugamo.is_inside = false;
+
+In_Komagome.name = "駒込";
+In_Komagome.next = In_Sugamo;
+In_Komagome.is_inside = true;
+
+Out_Komagome.name = "駒込";
+Out_Komagome.next = Out_Tabata;
+Out_Komagome.is_inside = false;
+
+In_Tabata.name = "田端";
+In_Tabata.next = In_Sugamo;
+In_Tabata.is_inside = true;
+
+Out_Tabata.name = "田端";
+Out_Tabata.next = Out_Nishi_Nippori;
+Out_Tabata.is_inside = false;
+
+In_Nishi_Nippori.name = "西日暮里";
+In_Nishi_Nippori.next = In_Tabata;
+In_Nishi_Nippori.is_inside = true;
+
+Out_Nishi_Nippori.name = "西日暮里";
+Out_Nishi_Nippori.next = Out_Nippori;
+Out_Nishi_Nippori.is_inside = false;
+
+In_Nippori.name = "日暮里"
+In_Nippori.next = In_Nishi_Nippori;
+In_Nippori.is_inside = true;
+
+Out_Nippori.name = "日暮里"
+Out_Nippori.next = Out_Uguisudani;
+Out_Nippori.is_inside = false;
+
+In_Uguisudani.name = "鶯谷";
+In_Uguisudani.next = In_Nippori;
+In_Uguisudani.is_inside = true;
+
+Out_Uguisudani.name = "鶯谷";
+Out_Uguisudani.next = Out_Ueno;
+Out_Uguisudani.is_inside = false;
+
+In_Ueno.name = "上野";
+In_Ueno.next = In_Uguisudani;
+In_Ueno.is_inside = true;
+
+Out_Ueno.name = "上野";
+Out_Ueno.next = Out_Okachimachi;
+Out_Ueno.is_inside = false;
+
+In_Okachimachi.name = "御徒町";
+In_Okachimachi.next = In_Ueno;
+In_Okachimachi.is_inside = true;
+
+Out_Okachimachi.name = "御徒町";
+Out_Okachimachi.next = Out_Akihabara;
+Out_Okachimachi.is_inside = false;
+
+In_Akihabara.name = "秋葉原";
+In_Akihabara.next = In_Okachimachi;
+In_Akihabara.is_inside = true;
+
+Out_Akihabara.name = "秋葉原";
+Out_Akihabara.next = Out_Kanda;
+Out_Akihabara.is_inside = false;
+
+In_Kanda.name = "神田";
+In_Kanda.next = In_Akihabara;
+In_Kanda.is_inside = true;
+
+Out_Kanda.name = "神田";
+Out_Kanda.next = Out_Tokyo;
+Out_Kanda.is_inside = false;
+
+In_Tokyo.name = "東京";
+In_Tokyo.next = In_Kanda;
+In_Tokyo.is_inside = true;
+
+Out_Tokyo.name = "東京";
+Out_Tokyo.next = Out_Yurakucho;
+Out_Tokyo.is_inside = false;
+
