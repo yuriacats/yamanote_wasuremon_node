@@ -1,9 +1,13 @@
 import { In_Tokyo, Out_Tokyo } from "./yamanote_stations";
 
+test('tokyoの名前の存在のテスト', function () {
+    expect(In_Tokyo.name).toBe("東京");
+})
+
 test('山手線内回りの整合性テスト', function () {
-    expect(In_Tokyo.next.name).toBe("神田")
-    expect(In_Tokyo.next.next.name).toBe("秋葉原")
-    expect(In_Tokyo.next.next.next.name).toBe("御徒町")
+    expect(In_Tokyo.next.name).toBe("神田");
+    expect(In_Tokyo.next.next.name).toBe("秋葉原");
+    expect(In_Tokyo.next.next.next.name).toBe("御徒町");
     expect(In_Tokyo.next.next.next.next.name).toBe("上野")
     expect(In_Tokyo.next.next.next.next.next.name).toBe("鶯谷")
     expect(In_Tokyo.next.next.next.next.next.next.name).toBe("日暮里")
