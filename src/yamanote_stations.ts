@@ -40,7 +40,7 @@ export const In_Tamachi = new Station("田町", true);
 export const In_Hamamatsucho = new Station("浜松町", true);
 export const In_Shinbashi = new Station("新橋", true);
 export const In_Yurakucho = new Station("有楽町", true);
-export const Out_Tokyo = new Station("東京", true);
+export const Out_Tokyo = new Station("東京", false);
 export const Out_Kanda = new Station("神田", false);
 export const Out_Akihabara = new Station("秋葉原", false);
 export const Out_Okachimachi = new Station("御徒町", false);
@@ -133,7 +133,7 @@ Out_Sugamo.next = Out_Komagome;
 In_Komagome.next = In_Sugamo;
 Out_Komagome.next = Out_Tabata;
 
-In_Tabata.next = In_Sugamo;
+In_Tabata.next = In_Komagome;
 Out_Tabata.next = Out_Nishi_Nippori;
 
 In_Nishi_Nippori.next = In_Tabata;
