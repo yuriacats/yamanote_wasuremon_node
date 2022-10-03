@@ -1,4 +1,4 @@
-import { In_Tokyo, Out_Tokyo } from "./yamanote_stations";
+import { In_Tokyo, Out_Tokyo } from "../yamanote_stations";
 
 test('tokyoの名前の存在のテスト', function () {
     expect(In_Tokyo.name).toBe("東京");
