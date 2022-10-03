@@ -1,4 +1,4 @@
-class Station {
+export class Station {
     // もっと良い書き方があるのだろうけどプロトタイプなのでこういう書き方にしてる。要リファクタ
     name: string;
     next: Station;
