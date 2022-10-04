@@ -1,4 +1,3 @@
-type date = { date: string }
 /*
 データ構造としての候補
 
@@ -22,15 +21,23 @@ type time = {
     hour: number,
     minute: number
 }
+type date = {
+    month: number,
+    day: number,
+    category: timetable_category
+}
 
-type train_loop = {
+type train_lines = {
     start_station: station,
-    timetable: [time]
+    line_timetable: [time]
     end_station: station,
     timetable_category: timetable_category
+    date_of_expiry: date
 }
 
 type station_timetable = {
     station: station,
     timetable_category: timetable_category,
+    station_timetable: [time]
+    date_of_expiry: date
 }

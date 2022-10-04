@@ -21,5 +21,6 @@ type station_timetable = {
 
 
 
-const hogehuga = new screping_base("https://www.jreast-timetable.jp/2210/timetable/tt1039/1039110.html#time_7")
+const hogehuga = new screping_base("https://www.jreast-timetable.jp/2210/train/075/079411.html ")
 //TODO 山手線の一つの駅のスクレイピングを作れる様にする。
+//https://www.jreast-timetable.jp/2210/train/075/079411.html 
