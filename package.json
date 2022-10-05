@@ -20,7 +20,9 @@
         "typescript": "^4.8.4"
     },
     "dependencies": {
+        "@types/jsdom": "^20.0.0",
         "@types/superagent": "^4.1.15",
+        "jsdom": "^20.0.1",
         "superagent": "^8.0.2"
     }
 }

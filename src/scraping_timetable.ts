@@ -1,5 +1,10 @@
 import superagent from 'superagent';
 import { Station } from './yamanote_stations';
+import { JSDOM } from 'jsdom';
+
+const getSelector = (doc: Document, selector: string) => {
+    return doc.querySelector(selector)?.textContent
+}
 
 class screping_base {
     private url: string
@@ -9,7 +14,10 @@ class screping_base {
     }
     async getRawHtml() {
         const result = await superagent.get(this.url);
-        console.log(result.text)
+        const dom = new JSDOM(result.text)
+        const document = dom.window.document;
+        console.log(getSelector(document, "h2"))
+
     }
 }
 export type timetable_category = "weekday" | "saturday" | "holiday";
