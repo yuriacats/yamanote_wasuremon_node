@@ -2,22 +2,24 @@ import superagent from 'superagent';
 import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
 
-const getSelector = (doc: Document, selector: string) => {
-    return doc.querySelector(selector)?.textContent
+const getSelector = (doc: Document, selector: string): string => {
+    const t = doc.querySelector(selector)?.textContent
+    return t ? t : "定義されていません";
+    // errorハンドリングを考える
 }
 
 class screping_base {
-    private url: string
+    private url: string;
+    documents;
     constructor(url: string) {
         this.url = url;
-        this.getRawHtml();
+        this.documents = this.getRawHtml();
     }
-    async getRawHtml() {
+    async getRawHtml(): Promise<string> {
         const result = await superagent.get(this.url);
         const dom = new JSDOM(result.text)
         const document = dom.window.document;
-        console.log(getSelector(document, "h2"))
-
+        return getSelector(document, "h2")
     }
 }
 export type timetable_category = "weekday" | "saturday" | "holiday";
@@ -40,5 +42,5 @@ type station_timetable = {
 }
 
 
-const hogehuga = new screping_base("https://www.jreast-timetable.jp/2210/train/075/079411.html ")
 //TODO 山手線の一つの駅のスクレイピングを作れる様にする。
+
