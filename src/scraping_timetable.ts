@@ -7,6 +7,11 @@ const is_have_selector = (doc: Document, selector: string): boolean => {
     return t ? true : false;
 }
 
+const check_loop = (target: Document): boolean => {
+    console.log(is_have_selector(target, ".arrow_loop_next"))
+    return false;
+}
+
 const get_screping_base = async (url: string): Promise<Document> => {
     const result = await superagent.get(url);
     const dom = new JSDOM(result.text);
@@ -14,10 +19,6 @@ const get_screping_base = async (url: string): Promise<Document> => {
     return document;
 }
 
-const check_loop = (target: Document): boolean => {
-    console.log(is_have_selector(target, ".arrow_loop_next"))
-    return false;
-}
 export type timetable_category = "weekday" | "saturday" | "holiday";
 // TODO 汎用的な時間型、拡張性のある汎用的なDate型を探す。（応用情報終わったら）
 type time = {
@@ -43,10 +44,9 @@ type station_loop = {
     date_of_expiry: date
 }
 
-
 //TODO 山手線の一つの駅のスクレイピングを作れる様にする。
 
-const huga = new get_screping_base("https://www.jreast-timetable.jp/2210/train/015/016491.html")
-const hoge = new get_screping_base("https://www.jreast-timetable.jp/2210/train/020/020431.html")
+const huga = get_screping_base("https://www.jreast-timetable.jp/2210/train/015/016491.html")
+const hoge = get_screping_base("https://www.jreast-timetable.jp/2210/train/020/020431.html")
 
 hoge.documents.then((val) => check_loop(val));
