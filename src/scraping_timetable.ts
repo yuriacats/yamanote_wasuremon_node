@@ -49,4 +49,4 @@ type station_loop = {
 const huga = get_screping_base("https://www.jreast-timetable.jp/2210/train/015/016491.html")
 const hoge = get_screping_base("https://www.jreast-timetable.jp/2210/train/020/020431.html")
 
-hoge.documents.then((val) => check_loop(val));
+hoge.then((val) => check_loop(val));
