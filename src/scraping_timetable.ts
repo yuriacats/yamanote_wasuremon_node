@@ -46,7 +46,14 @@ type station_loop = {
 
 //TODO 山手線の一つの駅のスクレイピングを作れる様にする。
 
-const huga = get_screping_base("https://www.jreast-timetable.jp/2210/train/015/016491.html")
-const hoge = get_screping_base("https://www.jreast-timetable.jp/2210/train/020/020431.html")
-
-hoge.then((val) => check_loop(val));
+// data-misk 大崎始発の場合に着く
+// data-dest 最終周の場合につく
+// 外回りスクレイピングするべきはこれで　https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html
+// スクレイピング中　301Gなどの下２桁　大崎の到着時刻終了フラグをもつ
+// 以下のType型の様なデータ構造で 
+type train_loop_ichizi = {
+    train_id: number,
+    train_arrival_time: time,
+    loop_flag: boolean,
+    start_Osaki: boolean
+}
