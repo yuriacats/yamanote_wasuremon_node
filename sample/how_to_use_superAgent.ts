@@ -1,3 +1,6 @@
+// git url
+// https://gist.github.com/2e074f9c87459765c6ff3cba96d3b480
+
 // superegent/jdomの使い方をざっくりと書き留めるサンプルコードです。
 
 const only_one_tags_extract = (targetDom: Document, targetSelector: string): string => {
