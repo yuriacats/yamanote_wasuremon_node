@@ -1,16 +1,22 @@
 import superagent from 'superagent';
 import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
+import { callbackify } from 'util';
 
 const is_have_selector = (doc: Document, selector: string): boolean => {
     const t = doc.querySelector(selector)?.textContent
     return t ? true : false;
 }
 
-const check_loop = (target: Document): boolean => {
-    console.log(is_have_selector(target, ".arrow_loop_next"))
-    return false;
+const check_loop = (target: Document): boolean => is_have_selector(target, ".arrow_loop_next")
+
+
+const extract_href = (elm: Element): string => {
+    const attrList: NamedNodeMap = elm.attributes;
+    const res: string = attrList.getNamedItem("href")?.value || "";
+    return res
 }
+
 
 const get_screping_base = async (url: string): Promise<Document> => {
     const result = await superagent.get(url);
@@ -57,3 +63,15 @@ type train_loop_ichizi = {
     loop_flag: boolean,
     start_Osaki: boolean
 }
+
+const before_url = "https://www.jreast-timetable.jp/2210"
+const osaki_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html")
+osaki_out_list.then((dom) => {
+    dom
+        .querySelectorAll(".time_link_black")
+        .forEach((val) => {
+            console.log(
+                extract_href(val)?.replace("../..", before_url)
+            );
+        })
+});
