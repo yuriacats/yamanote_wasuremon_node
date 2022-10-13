@@ -66,10 +66,19 @@ type train_loop_ichizi = {
 // データ型にしていくタイムテーブルを作成
 const before_url = "https://www.jreast-timetable.jp/2210"
 const osaki_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html")
+const shinagawa_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html")
 const train_list: Set<string> = new Set();
 osaki_out_list.then((dom) => {
     dom.querySelectorAll(".time_link_black")
         .forEach((val) => {
             train_list.add(extract_href(val)?.replace("../..", before_url))
         })
-});
+}).then(() => {
+    shinagawa_out_list.then((dom) => {
+        dom.querySelectorAll(".time_link_black")
+            .forEach((val) => {
+                train_list.add(extract_href(val)?.replace("../..", before_url));
+            })
+        console.log(train_list);
+    })
+})
