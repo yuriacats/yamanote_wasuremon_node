@@ -1,7 +1,7 @@
 import superagent from 'superagent';
 import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
-import { callbackify } from 'util';
+import {stringify} from 'csv-stringify/sync';
 
 const is_have_selector = (doc: Document, selector: string): boolean => {
     const t = doc.querySelector(selector)?.textContent
@@ -79,6 +79,9 @@ osaki_out_list.then((dom) => {
             .forEach((val) => {
                 train_list.add(extract_href(val)?.replace("../..", before_url));
             })
-        console.log(train_list);
     })
-})
+}).then(()=>{
+    const array = [...train_list];
+    console.log(array.length)
+    //train list を外回り・内回り情報を持ったデータテーブルにする
+    })
