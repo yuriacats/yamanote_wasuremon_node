@@ -64,24 +64,18 @@ type train_loop_ichizi = {
     start_Osaki: boolean
 }
 // データ型にしていくタイムテーブルを作成
-const before_url = "https://www.jreast-timetable.jp/2210"
 const osaki_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html")
 const shinagawa_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html")
-const train_list: Set<string> = new Set();
-osaki_out_list.then((dom) => {
-    dom.querySelectorAll(".time_link_black")
-        .forEach((val) => {
-            train_list.add(extract_href(val)?.replace("../..", before_url))
+const get_train_timetabele_urls =async (url:string): Promise<Set<string>>=> {
+        //TODO が全部できたら関数名を変更し、今回の初期値を代入したものをこの関数として定義し直す。
+    const before_url = "https://www.jreast-timetable.jp/2210"
+    //TODO before_urlも分割代入できるかを検証する
+    const dom:Document = await get_screping_base(url)
+    const result:Array<string> = Array.from(dom.querySelectorAll(".time_link_black"))
+    // TODO QuerySelectorAllも分割代入できるようにする
+            .map((val) => {
+             return extract_href(val)?.replace("../..", before_url)
+             // 任意回数の../の繰り返しとしして規定する
         })
-}).then(() => {
-    shinagawa_out_list.then((dom) => {
-        dom.querySelectorAll(".time_link_black")
-            .forEach((val) => {
-                train_list.add(extract_href(val)?.replace("../..", before_url));
-            })
-    })
-}).then(()=>{
-    const array = [...train_list];
-    console.log(array.length)
-    //train list を外回り・内回り情報を持ったデータテーブルにする
-    })
+        return new Set(result)
+}
