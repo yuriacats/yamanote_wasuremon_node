@@ -1,7 +1,6 @@
 import superagent from 'superagent';
 import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
-import {stringify} from 'csv-stringify/sync';
 
 const is_have_selector = (doc: Document, selector: string): boolean => {
     const t = doc.querySelector(selector)?.textContent
@@ -64,8 +63,8 @@ type train_loop_ichizi = {
     start_Osaki: boolean
 }
 // データ型にしていくタイムテーブルを作成
-const osaki_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html")
-const shinagawa_out_list = get_screping_base("https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html")
+const osaki_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html"
+const shinagawa_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html"
 const get_train_timetabele_urls =async (url:string): Promise<Set<string>>=> {
         //TODO が全部できたら関数名を変更し、今回の初期値を代入したものをこの関数として定義し直す。
     const before_url = "https://www.jreast-timetable.jp/2210"
@@ -74,8 +73,8 @@ const get_train_timetabele_urls =async (url:string): Promise<Set<string>>=> {
     const result:Array<string> = Array.from(dom.querySelectorAll(".time_link_black"))
     // TODO QuerySelectorAllも分割代入できるようにする
             .map((val) => {
-             return extract_href(val)?.replace("../..", before_url)
-             // 任意回数の../の繰り返しとしして規定する
+             return extract_href(val)?.replace(/([../]*[..]{1,})/, before_url)
         })
         return new Set(result)
 }
+get_train_timetabele_urls(osaki_out_list).then((val)=>{console.log(val)})
