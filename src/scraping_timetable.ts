@@ -24,6 +24,22 @@ const get_screping_base = async (url: string): Promise<Document> => {
     return document;
 }
 
+// データ型にしていくタイムテーブルを作成
+const get_saitmap_to_url_lists = async (
+    url: string,
+    before_url: string,
+    target_selector: string
+): Promise<Set<string>> => {
+    // 型情報を別な定義に括り出した方がいい？
+    const dom: Document = await get_screping_base(url)
+    const result: Array<string> = Array.from(dom.querySelectorAll(target_selector))
+        .map((val) => {
+            return extract_href(val)?.replace(/([../]*[..]{1,})/, before_url)
+        })
+    return new Set(result)
+}
+const get_train_timetabele_urls = (url: string) => get_saitmap_to_url_lists(url, "https://www.jreast-timetable.jp/2210", ".time_link_black")
+
 export type timetable_category = "weekday" | "saturday" | "holiday";
 // TODO 汎用的な時間型、拡張性のある汎用的なDate型を探す。（応用情報終わったら）
 type time = {
@@ -62,19 +78,8 @@ type train_loop_ichizi = {
     loop_flag: boolean,
     start_Osaki: boolean
 }
-// データ型にしていくタイムテーブルを作成
+
 const osaki_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html"
 const shinagawa_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html"
-const get_train_timetabele_urls =async (url:string): Promise<Set<string>>=> {
-        //TODO が全部できたら関数名を変更し、今回の初期値を代入したものをこの関数として定義し直す。
-    const before_url = "https://www.jreast-timetable.jp/2210"
-    //TODO before_urlも分割代入できるかを検証する
-    const dom:Document = await get_screping_base(url)
-    const result:Array<string> = Array.from(dom.querySelectorAll(".time_link_black"))
-    // TODO QuerySelectorAllも分割代入できるようにする
-            .map((val) => {
-             return extract_href(val)?.replace(/([../]*[..]{1,})/, before_url)
-        })
-        return new Set(result)
-}
-get_train_timetabele_urls(osaki_out_list).then((val)=>{console.log(val)})
+get_train_timetabele_urls(osaki_out_list).then((val) => { console.log(val) })
+// osaki_out_listとshinagawa_out_listをあわせてひとつのURLとする関数を作る。
