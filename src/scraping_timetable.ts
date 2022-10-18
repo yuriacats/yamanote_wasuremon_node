@@ -2,7 +2,7 @@ import superagent from 'superagent';
 import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
 
-const is_have_selector = (doc: Document, selector: string): boolean => {
+export const is_have_selector = (doc: Document, selector: string): boolean => {
     const t = doc.querySelector(selector)?.textContent
     return t ? true : false;
 }
