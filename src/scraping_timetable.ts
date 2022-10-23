@@ -2,19 +2,12 @@ import superagent from 'superagent';
 import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
 
-export const is_have_selector = (doc: Document, selector: string): boolean => {
-    const t = doc.querySelector(selector)?.textContent
-    return t ? true : false;
-}
+export const has_selector = (doc: Document, selector: string): boolean =>
+    Boolean(doc.querySelector(selector)?.textContent)
 
-const check_loop = (target: Document): boolean => is_have_selector(target, ".arrow_loop_next")
+const check_yamanote_loop = (target: Document): boolean => has_selector(target, ".arrow_loop_next")
 
-
-const extract_href = (elm: Element): string => {
-    const attrList: NamedNodeMap = elm.attributes;
-    const res: string = attrList.getNamedItem("href")?.value || "";
-    return res
-}
+const extract_link = (elm: Element): string => elm.attributes.getNamedItem("href")?.value || "";
 
 
 const get_screping_base = async (url: string): Promise<Document> => {
@@ -34,7 +27,7 @@ const get_saitmap_to_url_lists = async (
     const dom: Document = await get_screping_base(url)
     const result: Array<string> = Array.from(dom.querySelectorAll(target_selector))
         .map((val) => {
-            return extract_href(val)?.replace(/([../]*[..]{1,})/, before_url)
+            return extract_link(val)?.replace(/([../]*[..]{1,})/, before_url)
         })
     return new Set(result)
 }
