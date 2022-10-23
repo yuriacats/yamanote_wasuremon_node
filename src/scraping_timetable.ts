@@ -31,7 +31,12 @@ const get_saitmap_to_url_lists = async (
         })
     return new Set(result)
 }
-const get_train_timetabele_urls = (url: string) => get_saitmap_to_url_lists(url, "https://www.jreast-timetable.jp/2210", ".time_link_black")
+
+
+const get_train_timetabele_urls = (url: string) => get_saitmap_to_url_lists(
+    url,
+    "https://www.jreast-timetable.jp/2210",
+    ".time_link_black")
 
 export type timetable_category = "weekday" | "saturday" | "holiday";
 // TODO 汎用的な時間型、拡張性のある汎用的なDate型を探す。（応用情報終わったら）
@@ -74,5 +79,4 @@ type train_loop_ichizi = {
 
 const osaki_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html"
 const shinagawa_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html"
-get_train_timetabele_urls(osaki_out_list).then((val) => { console.log(val) })
 // osaki_out_listとshinagawa_out_listをあわせてひとつのURLとする関数を作る。
