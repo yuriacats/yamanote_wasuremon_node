@@ -7,7 +7,7 @@ export const has_selector = (doc: Document, selector: string): boolean =>
 
 const check_yamanote_loop = (target: Document): boolean => has_selector(target, ".arrow_loop_next")
 
-const extract_link = (elm: Element): string => elm.attributes.getNamedItem("href")?.value || "";
+export const extract_link = (elm: Element): string => elm.attributes.getNamedItem("href")?.value || "";
 
 
 const get_screping_base = async (url: string): Promise<Document> => {
