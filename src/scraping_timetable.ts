@@ -7,28 +7,28 @@ import { JSDOM } from 'jsdom';
  * @param selector hoge classが欲しい場合は".hoge" hoge idが欲しい場合は”#hoge”と記載
  * @return　入っている場合はTrueが返却されます。
  */
-export const has_selector = (doc: Document, selector: string): boolean =>
+export const hasSelector = (doc: Document, selector: string): boolean =>
     Boolean(doc.querySelector(selector)?.textContent)
 /**
  * その運行テーブルの電車が環状運転かを判定する関数
  * @param target 確認して欲しい山手線の運行テーブルページのDOMを
  * @returns 環状運転の場合はTrueが返却されます。
  */
-const check_yamanote_loop = (target: Document): boolean => has_selector(target, ".arrow_loop_next")
+const checkYamanoteLoop = (target: Document): boolean => hasSelector(target, ".arrow_loop_next")
 
 /**
  * ElementからリンクののURLを抽出する。
  * @param elm HREFプロパティが入っていることを期待しているElement
  * @returns URLがある場合はURLをない場合は空文字列を返します。
  */
-export const extract_link = (elm: Element): string => elm.attributes.getNamedItem("href")?.value || "";
+export const extractLink = (elm: Element): string => elm.attributes.getNamedItem("href")?.value || "";
 
 /**
  * スクレイピングしたいURLからDOM生成します。
  * @param url 処理したいWEBサイトのURL
  * @returns JSDOMで扱えるDOMが返却されます。
  */
-const get_screping_base = async (url: string): Promise<Document> => {
+const getScrepingBase = async (url: string): Promise<Document> => {
     const result = await superagent.get(url);
     const dom = new JSDOM(result.text);
     const document = dom.window.document;
@@ -42,22 +42,22 @@ const get_screping_base = async (url: string): Promise<Document> => {
  * @param target_selector サイトマップのLinkが書かれているElementの要素
  * @returns 
  */
-const get_saitmap_to_url_lists = async (
+const getSitemapToUrllists = async (
     url: string,
     before_url: string,
     target_selector: string
 ): Promise<Set<string>> => {
     // 型情報を別な定義に括り出した方がいい？
-    const dom: Document = await get_screping_base(url)
+    const dom: Document = await getScrepingBase(url)
     const result: Array<string> = Array.from(dom.querySelectorAll(target_selector))
         .map((val) => {
-            return extract_link(val)?.replace(/([../]*[..]{1,})/, before_url)
+            return extractLink(val)?.replace(/([../]*[..]{1,})/, before_url)
         })
     return new Set(result)
 }
 
 
-const get_train_timetabele_urls = (url: string) => get_saitmap_to_url_lists(
+const getTrainTimetabeleUrls = (url: string) => getSitemapToUrllists(
     url,
     "https://www.jreast-timetable.jp/2210",
     ".time_link_black")
