@@ -35,3 +35,39 @@ WEBアプリとして提供する。
 https://aws.amazon.com/jp/getting-started/guides/deploy-webapp-ecs/module-one/
 
 フロントは別なRepoで作成（vercel、Pagesなど）
+
+
+## 外部仕様
+
+渡すURL
+GET ://yamanote.wasuremon.oo/out/shinjuku?arrivalTime=2000
+/out/ {out,in} 弾く　４０４
+out/{駅名} 弾く　４０４
+?arrivalTime 降りた時間
+?limit いくつ候補を出すか（デフォルト：３）
+
+返り値
+{
+status: 200,
+message:{
+targetStation: "新宿",
+    arrivalTrains: [
+        {
+            arrivelStation: "新宿",
+            arrivelTime: "21:04",
+        },
+        {
+            arrivelStation: "新宿",
+            arrivelTime: "20:59",
+        },
+        {
+            arrivelStation: "新宿",
+            arrivelTime: "20:55",
+        },
+    ]
+}
+
+
+
+
+
