@@ -14,3 +14,24 @@ https://gist.github.com/yuriacats/8f63b18138d533230bbe1b9cd042880d
 ```
 gh gist edit 8f63b18138d533230bbe1b9cd042880d idea.ts 
 ```
+
+# ユースケース
+
+- 山手線の車内に忘れ物をしたことに降りた後に気がついたとき
+（- 山手線で待ち合わせをするときその電車が何駅に何時に着くのかを調べる）
+
+機能：
+降りた時間から直前3つの電車がまたその駅に何時に戻ってくるのか。戻ってこない場合は終点駅に何時に到着するかを返す
+
+WEBアプリとして提供する。
+- API
+- フロント
+これを別で作成し、運用する。
+月１回Cronをして時刻表を取得　→　最新の時刻表を反映
+
+フレームワークはExpressで実装する。
+
+コンテナで作って、そこにURLやAPIのルーティングはAPIGateway
+https://aws.amazon.com/jp/getting-started/guides/deploy-webapp-ecs/module-one/
+
+フロントは別なRepoで作成（vercel、Pagesなど）
