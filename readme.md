@@ -41,7 +41,7 @@ https://aws.amazon.com/jp/getting-started/guides/deploy-webapp-ecs/module-one/
 
 URL
 ```
-GET ://yamanote.wasuremon.oo/out/shinjuku?arrivalTime=2000
+GET ://yamanote.wasuremon.oo/v1/out/shinjuku?arrivalTime=2000
 /out/ {out,in} 弾く　４０４
 out/{駅名} 弾く　４０４
 ?arrivalTime 降りた時間
