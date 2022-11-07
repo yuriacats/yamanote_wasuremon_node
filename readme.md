@@ -39,14 +39,17 @@ https://aws.amazon.com/jp/getting-started/guides/deploy-webapp-ecs/module-one/
 
 ## 外部仕様
 
-渡すURL
+URL
+```
 GET ://yamanote.wasuremon.oo/out/shinjuku?arrivalTime=2000
 /out/ {out,in} 弾く　４０４
 out/{駅名} 弾く　４０４
 ?arrivalTime 降りた時間
 ?limit いくつ候補を出すか（デフォルト：３）
+```
 
 返り値
+```
 {
 status: 200,
 message:{
@@ -66,7 +69,7 @@ targetStation: "新宿",
         },
     ]
 }
-
+```
 
 
 
