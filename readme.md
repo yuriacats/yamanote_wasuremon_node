@@ -53,7 +53,7 @@ out/{駅名} 弾く　４０４
 {
 status: 200,
 message:{
-targetStation: "新宿",
+    targetStation: "新宿",
     arrivalTrains: [
         {
             arrivelStation: "新宿",
@@ -68,6 +68,7 @@ targetStation: "新宿",
             arrivelTime: "20:55",
         },
     ]
+    }
 }
 ```
 
