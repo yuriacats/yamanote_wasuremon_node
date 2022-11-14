@@ -11,4 +11,4 @@ classDiagram
     StationTimeTable : +TimetableCategory category 
 
 ```
-TimeTableCategory = ["","",""] のUnion型である。
+TimeTableCategory = ["weekday" | "saturday" | "holiday"] のUnion型である。
