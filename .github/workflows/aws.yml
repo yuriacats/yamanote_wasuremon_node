@@ -35,7 +35,7 @@ env:
   ECR_REPOSITORY: ${{secrets.MY_ECR_REPOSITORY}}           # set this to your Amazon ECR repository name
   ECS_SERVICE: ${{ secrets.MY_ECS_SERVICE }}                 # set this to your Amazon ECS service name
   ECS_CLUSTER: ${{ secrets.MY_ECS_CLUSTER }}                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: task-definition.json # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: ecs-task-def.json # set this to the path to your Amazon ECS task definition
   CONTAINER_NAME: yamanote_wasuremono_node           # set this to the name of the container in the
 
 permissions:
