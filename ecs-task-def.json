@@ -3,7 +3,7 @@
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "yamanote_wasuremon",
+            "name": "yamanote_wasuremon_node",
             "image": "561712284442.dkr.ecr.ap-northeast-1.amazonaws.com/yamanote_wasuremon_oo",
             "portMappings": [
                 {
