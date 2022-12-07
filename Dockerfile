@@ -5,5 +5,5 @@ COPY --chown=node:node package.json ./
 RUN yarn install 
 COPY --chown=node:node . .
 
-USER node
-CMD ["yarn","start"]
+EXPOSE 8080
+ENTRYPOINT ["yarn","start"]

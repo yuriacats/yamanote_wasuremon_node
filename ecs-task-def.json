@@ -3,8 +3,8 @@
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "httpd-container",
-            "image": "httpd",
+            "name": "yamanote_wasuremono_node",
+            "image": "561712284442.dkr.ecr.ap-northeast-1.amazonaws.com/yamanote_wasuremon_oo",
             "portMappings": [
                 {
                     "containerPort": 80,
