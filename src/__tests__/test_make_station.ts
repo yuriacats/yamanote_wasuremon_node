@@ -3,6 +3,15 @@ import { In_Tokyo, Out_Tokyo } from "../yamanote_stations";
 test('tokyoの名前の存在のテスト', function () {
     expect(In_Tokyo.name).toBe("東京");
 })
+const YamanoteList =[ "神田", "秋葉原", "御徒町", "上野", "鶯谷", "日暮里", "西日暮里", "田端", "駒込", "巣鴨", "大塚", "池袋", "目白", "高田馬場", "新大久保", "新宿", "代々木", "原宿", "渋谷", "恵比寿", "目黒", "五反田", "大崎", "品川", "高輪ゲートウェイ", "田町", "浜松町", "新橋", "有楽町", "東京", ]
+
+test('山手線内回りの整合性テスト', function () {
+    let Station = In_Tokyo
+    YamanoteList.map((target_station)=>{
+        Station = Station.next
+        expect(Station.name).toBe(target_station)
+    })
+});
 
 test('山手線内回りの整合性テスト', function () {
     expect(In_Tokyo.next.name).toBe("神田");
