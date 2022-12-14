@@ -33,17 +33,12 @@ const YamanoteList = [
 
 export type StationName = typeof YamanoteList[number]
 export type tableCategory = "weekday" | "holiday";
+export const Direction = {
+    INNER: 'inner',
+    OUTER: 'outer'
+} as const
+type Direction = typeof Direction[keyof typeof Direction];
 
-export class Station {
-    name: StationName;
-    next: Station;
-    is_inside: boolean;
-    constructor(name: StationName, is_inside: boolean) {
-        this.name = name;
-        this.is_inside = is_inside;
-        this.next = this
-    }
-}
 export class Time {
     hour: number;
     minute: number;
@@ -54,12 +49,16 @@ export class Time {
     }
     // 0:00から何分経過したかを返すメソッド
     asMinutes = (): number => this.hour * 60 + this.minute;
+    toString = (): string => `${this.hour}:${this.minute}`
 }
 
 export type StationTimetable = {
+    station: StationName,
+    direction: Direction,
     trainArrivals: [Train, Time]
 }
 export type Train = {
     arrivalTimes: { [key in StationName]: [Time] },
+    direction: Direction,
     lastArrival: [StationName, Time]
 }
