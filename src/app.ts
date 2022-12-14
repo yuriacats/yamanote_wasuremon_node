@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000; // port番号を指定
 
 // ------ ルーティング ------ //
 const router = require('./routes/');
-app.use('/', router);
+app.use('/v1/', router);
 
 //サーバ起動
 app.listen(port);
