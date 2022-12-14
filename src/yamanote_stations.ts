@@ -1,14 +1,8 @@
-export class Station {
-    // もっと良い書き方があるのだろうけどプロトタイプなのでこういう書き方にしてる。要リファクタ
-    name: string;
-    next: Station;
-    is_inside: boolean;
-    constructor(name: string, is_inside: boolean) {
-        this.name = name;
-        this.is_inside = is_inside;
-        this.next = this
-    }
-}
+import { Station, StationName } from "./entities";
+
+
+// let stations: { [key in StationName]: Station }
+
 
 export const In_Tokyo = new Station("東京", true);
 export const In_Kanda = new Station("神田", true);
