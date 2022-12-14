@@ -1,6 +1,7 @@
 import superagent from 'superagent';
-import { Station } from './yamanote_stations';
 import { JSDOM } from 'jsdom';
+import { Time } from './entities';
+
 /**
  * Selector（JSDOM方式）が引数のDocumentにあるかどうかを判定する関数です
  * @param doc 対象のDocumentを記載。
@@ -9,6 +10,7 @@ import { JSDOM } from 'jsdom';
  */
 export const hasSelector = (doc: Document, selector: string): boolean =>
     Boolean(doc.querySelector(selector)?.textContent)
+
 /**
  * その運行テーブルの電車が環状運転かを判定する関数
  * @param target 確認して欲しい山手線の運行テーブルページのDOMを
@@ -62,29 +64,6 @@ const getTrainTimetabeleUrls = (url: string) => getSitemapToUrllists(
     "https://www.jreast-timetable.jp/2210",
     ".time_link_black")
 
-export type timetable_category = "weekday" | "saturday" | "holiday";
-type time = {
-    hour: number,
-    minits: number
-}
-type date = {
-    month: number,
-    day: number,
-}
-
-type stationTimetable = {
-    station: Station,
-    timetableCategory: [timetable_category],
-    arrivalTimes: [time],
-    dateOfExpiry: date
-}
-type trainArrivalSchedule = {
-    startingStation: Station,
-    timetableCategory: [timetable_category],
-    arrivalTimes: [time],
-    dateOfExpiry: date
-}
-
 //TODO 山手線の一つの駅のスクレイピングを作れる様にする。
 
 // data-misk 大崎始発の場合に着く
@@ -94,7 +73,7 @@ type trainArrivalSchedule = {
 // 以下のType型の様なデータ構造で 
 type train_loop_ichizi = {
     train_id: number,
-    train_arrival_time: time,
+    train_arrival_time: Time,
     loop_flag: boolean,
     start_Osaki: boolean
 }

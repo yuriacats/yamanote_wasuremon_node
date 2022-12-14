@@ -1,9 +1,11 @@
+import { StationName, Time } from "../entities";
+
 interface TrainArrival {
-    arrivelStation: string;
+    arrivelStation: StationName;
     arrivelTime: string;
 }
 interface TrainArrivals {
-    targetStation: string;
+    targetStation: StationName;
     arrivalTrains: TrainArrival[];
 }
 
