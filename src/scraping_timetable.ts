@@ -78,6 +78,18 @@ type train_loop_ichizi = {
     start_Osaki: boolean
 }
 
-const osaki_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0319/0319040.html"
+const osaki_out_list = "https://www.jreast-timetable.jp/2302/train/010/014231.html"
 const shinagawa_out_list = "https://www.jreast-timetable.jp/2210/timetable/tt0788/0788050.html"
 // osaki_out_listとshinagawa_out_listをあわせてひとつのURLとする関数を作る。
+
+getScrepingBase(osaki_out_list).then((dom)=> {
+    dom.querySelectorAll("tr.time")
+    //array.prototype.findメソッドを活用して環状線と書かれている部分よりも上側の配列のみを対象とする。
+    .forEach((q)=>{
+        const retral = /発.*/i
+        const baseText = q.textContent?.replace(/\r?\n/g, '').replace(retral,'');
+        console.log(baseText);
+        console.log("-----");
+    }
+)})
+
